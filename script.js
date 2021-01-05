@@ -1,50 +1,66 @@
 $(document).ready(function(){
     $("#currentDay").text(moment().format("MMMM Do YYYY"));
+    moment().format('LT');
 
     displayBlocks();
-
     function displayBlocks(){
-
- 
 
         for (var i = 0; i < 9; i++){
 
+            //3rd Task
+            // The time blocks need to be color coded depending on the hour
+            // if its past gray, present red and future green
 
-            if(i === 3){
-                
-
-            }
-
-            //created the containers for the time block
+        //1. Rows for each individual hour (9)
         var divRow = $("<div>");
-        divRow.attr("id", "rows-" + i)
-        divRow.addClass("row time-block");
         $(divRow).appendTo(".container");
+        divRow.addClass("row time-block");
+        //2. Columns for displaying the hours 
+            
+        var hourcol = $("<div>");
+        $(hourcol).appendTo(divRow);
+        hourcol.addClass("col-md-1 p-2 hour ");
+        //if i is less than 3 text i which is 0 plus 9 which is 2++
+        if(i <3){
+            hourcol.text(i + 9 + "am")
+        }
+        //if i is equal to 3 then text i which is 0 and 9
+        else if (i === 3){
+            hourcol.text(i + 9 +"pm")
+        }
+        //if i is more than 3 then
+        else{
+            hourcol.text(-3 + i +"pm")
+        }
 
-        var hourColumns = $("<div>");
-        hourColumns.addClass("col-md-1 hour p-3");
-        hourColumns.text((i+9)+ " AM")
-        $(hourColumns).appendTo("#rows-"+i);
-       
+        //3. Textarea column so it can recieve input from the user
+        var userInput = $("<textarea>");
+        $(userInput).appendTo(divRow);
+        userInput.addClass("col-md-10 textarea");
+        
+        //4. Columns on the left sign with save buttons
+        var storageBtn = $("<button>");
+        $(storageBtn).appendTo(divRow);
+        storageBtn.addClass("saveBtn col-md-1 far fa-save");
+
         
 
-        var userText = $("<textarea>");
-        userText.addClass("col-md-10 description");
-        $(userText).appendTo("#rows-"+i);
-        
 
-        var saveBtn = $("<button>");
-        saveBtn.addClass("col-md-1 saveBtn btn");
-        $(saveBtn).appendTo("#rows-"+i);
-
-        var saveIcon = $("<i>");
-        saveIcon.addClass("far fa-save");
-        $(saveIcon).appendTo(saveBtn);
 
         }
 
 
     }
+
+
+
+
+
+
+
+
+
+
 
 
 
