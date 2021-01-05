@@ -1,7 +1,11 @@
 $(document).ready(function(){
     $("#currentDay").text(moment().format("MMMM Do YYYY"));
-    moment().format('LT');
 
+    var currentTime = moment().format('LT');
+    
+
+    
+   
     displayBlocks();
     function displayBlocks(){
 
@@ -9,7 +13,10 @@ $(document).ready(function(){
 
             //3rd Task
             // The time blocks need to be color coded depending on the hour
+            // How can we account for time
             // if its past gray, present red and future green
+
+            
 
         //1. Rows for each individual hour (9)
         var divRow = $("<div>");
@@ -20,7 +27,9 @@ $(document).ready(function(){
         var hourcol = $("<div>");
         $(hourcol).appendTo(divRow);
         hourcol.addClass("col-md-1 p-2 hour ");
+        //targeting the current day basically we need to target the individual hour block
         //if i is less than 3 text i which is 0 plus 9 which is 2++
+        
         if(i <3){
             hourcol.text(i + 9 + "am")
         }
@@ -36,7 +45,18 @@ $(document).ready(function(){
         //3. Textarea column so it can recieve input from the user
         var userInput = $("<textarea>");
         $(userInput).appendTo(divRow);
-        userInput.addClass("col-md-10 textarea");
+        userInput.addClass("col-md-10 textarea past");
+        userInput.text(currentTime).empty();
+        console.log(currentTime);
+        
+        if (currentTime < ){
+            
+            //we need to compare the current time to present hours
+            //we need to compare the current time to past hours
+            //textarea add attribute to the one needed on the parameter
+
+        }
+        
         
         //4. Columns on the left sign with save buttons
         var storageBtn = $("<button>");
@@ -48,22 +68,5 @@ $(document).ready(function(){
 
 
         }
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 })
