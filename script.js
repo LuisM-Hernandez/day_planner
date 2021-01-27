@@ -4,7 +4,7 @@ $(document).ready(function(){
     // Moment.js format for current time (Military Time)
     var currentTime = parseInt(moment().format("H"));
 
-    
+
    
     displayBlocks();
 
@@ -25,11 +25,14 @@ $(document).ready(function(){
         hourcol.attr("id", "hour-" + i);
         hourcol.text(moment(i, "H").format("h a"));
 
-        
+        var textVal = localStorage.getItem("hour-"+i);
         let textArea = $("<textarea>");
+        textArea.val(textVal);
         $(textArea).appendTo(divBlock);
         textArea.attr("id", "area");
         textArea.addClass("col-md-10 textarea" );
+
+
         
         let timeClass = "past"
 	    if (currentTime === i) timeClass = "present"
@@ -52,11 +55,9 @@ $(document).ready(function(){
           var timeText =  $(this).siblings(".hour").attr("id");
 
             localStorage.setItem(timeText, userInput);
-            
+           
           });
     }
-    // Need to update html with the values from each item of local storage to display. Use Get Item
-
     
       
 })

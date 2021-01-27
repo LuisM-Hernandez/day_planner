@@ -70,3 +70,7 @@ textarea{
   font-size: 40px;
   transition: all .3s ease-in-out;
 }
+
+#area{
+  color: #000000;
+}
